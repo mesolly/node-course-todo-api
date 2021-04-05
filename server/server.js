@@ -17,8 +17,16 @@ app.post('/todos',(request,response)=>{
     todo.save().then((doc)=>{
         response.send(doc) ;
     },(err)=>{
-        response.status(400).send(err) ;
+        response.send(err) ;
     }) ;
+});
+
+app.get('/todos',(request,response)=>{
+    Todo.find().then((todos)=>{
+        response.send({todos}) ;
+    },(err)=>{
+        response.send(err) ;
+    }) 
 });
 
 app.listen(3000,()=>{
