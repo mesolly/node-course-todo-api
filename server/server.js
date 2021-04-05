@@ -17,7 +17,7 @@ app.post('/todos',(request,response)=>{
     todo.save().then((doc)=>{
         response.send(doc) ;
     },(err)=>{
-        response.send(err) ;
+        response.status(400).send(err) ;
     }) ;
 });
 
@@ -26,7 +26,7 @@ app.get('/todos',(request,response)=>{
         response.send({todos}) ;
     },(err)=>{
         response.send(err) ;
-    }) 
+    }) ;
 });
 
 app.listen(3000,()=>{
