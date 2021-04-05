@@ -17,10 +17,12 @@ app.post('/todos',(request,response)=>{
     todo.save().then((doc)=>{
         response.send(doc) ;
     },(err)=>{
-        response.send(err) ;
+        response.status(400).send(err) ;
     }) ;
 });
 
 app.listen(3000,()=>{
     console.log('Stared at 3000') ;
-})
+});
+
+module.exports = {app} ;
